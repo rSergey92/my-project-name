@@ -1,0 +1,25 @@
+<div class="container">
+  <section id="infinite-scroller"
+           *ngIf="items"
+           appInfiniteScroller
+           scrollPerecnt="70"
+           immediateCallback="true"
+           [scrollCallback]="scrollCallback"
+  >
+    <mat-card *ngFor="let item of data">
+      <a href="/cards/{{item.author_key}}">
+        <mat-card-header>
+          <mat-card-title>{{ item.title }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p class="card__name">{{ item.author_name }}</p>
+          <p class="card__date">{{ item.publish_date }}</p>
+        </mat-card-content>
+      </a>
+
+      <app-comments></app-comments>
+      <app-rating></app-rating>
+    </mat-card>
+  </section>
+</div>
+<mat-spinner *ngIf="isShowCard" class="loader"></mat-spinner>

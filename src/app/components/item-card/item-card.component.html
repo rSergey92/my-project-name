@@ -1,0 +1,24 @@
+<section
+  class="container"
+  id="infinite-scroller"
+ *ngIf="dataAuthor"
+>
+    <mat-card *ngFor="let item of dataAuthor.docs" class="mb-3">
+        <mat-card-header>
+          <mat-card-title>{{ item.title }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p class="card__name">{{ item.author_name }}</p>
+          <p class="card__date">{{ item.publish_date }}</p>
+          <p>{{item.first_sentence}}</p>
+        </mat-card-content>
+      <hr />
+    </mat-card>
+    <h2>Комментарии:</h2>
+    <ul class="list-group" *ngFor="let item of dataComment">
+      <li class="list-group-item mb-2">{{item.title}}</li>
+    </ul>
+    <app-comments></app-comments>
+    <app-rating></app-rating>
+</section>
+

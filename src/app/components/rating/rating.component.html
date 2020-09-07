@@ -1,0 +1,16 @@
+<section class="row">
+  <header class="col-md-12">
+    Рейтинг:
+  </header>
+  <main class="col-md-12">
+    <ul class="list-inline rating-list">
+      <li
+        *ngFor="let star of stars"
+        (click)="countStar(star)"
+        [ngClass]="{'selected': (star >= selectedValue)}"
+        style="display: inline-block"
+      ><i class="fa fa-star "></i>
+      </li>
+    </ul>
+  </main>
+</section>

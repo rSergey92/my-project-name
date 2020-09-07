@@ -1,0 +1,29 @@
+<section class="row">
+  <header class="col-xs-6 col-md-12">
+    <h1>Комментарии: <strong>{{ comments.length }}</strong></h1>
+  </header>
+  <main class="col-xs-6 col-md-6">
+    <form class="input-group mb-3" (ngSubmit)="onSubmit()" [formGroup]="form" >
+      <input type="text"
+             formControlName="title"
+             class="form-control mr-3"
+             placeholder="Добавить новый комментарий"
+      />
+      <div class="input-group-btn">
+        <button
+          class="btn btn-primary"
+          [disabled]="form.invalid"
+          type="submit">Сохранить</button>
+      </div>
+    </form>
+    <ul class="list-group" *ngIf="comments.length; else noComments">
+      <li *ngFor="let comment of comments; let i = index" class="list-group-item">
+        <span> {{ comment.title }} </span>
+        <button (click)="onDelete(comment)" class="btn btn-danger">Удалить</button>
+      </li>
+    </ul>
+    <ng-template #noComments>
+      <p class="text-center">Нет Комментариев</p>
+    </ng-template>
+  </main>
+</section>
